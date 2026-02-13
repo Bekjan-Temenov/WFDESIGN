@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* 1. ШРИФТЫ */
+  /* Связываем Tailwind класс font-sans с нашей переменной из Next.js */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* 2. ЦВЕТА */
+  --color-brand-blue: #3F25FF;
+  --color-brand-black: #1A1A1A;
+  --color-brand-gray: #9F9F9F;
+  --color-brand-white: #FFFFFF;
+
+  /* 3. РАЗМЕРЫ (Spacing) */
+  /* Теперь можно писать p-section, gap-card-gap */
+  --spacing-section: 100px;  /* Расстояние между блоками */
+  --spacing-card-gap: 20px;  /* Отступ между карточками */
+  --spacing-row-gap: 40px;   /* Вертикальный отступ */
+  
+  /* 4. ШИРИНА КОНТЕЙНЕРА */
+  --width-main: 1410px;      /* max-w-main */
+
+  /* 5. РАЗМЕРЫ ШРИФТА (Text sizes) */
+  /* text-heading-lg -> font-size: 55px */
+  --text-heading-lg: 55px;
+  --text-heading-lg--line-height: 100%;
+
+  /* text-caps -> font-size: 12px */
+  --text-caps: 12px;
+  --text-caps--line-height: 100%;
+  --text-caps--letter-spacing: 0%;
+
+  /* Класс text-caption (для меню) */
+  --text-caption: 12px;
+  --text-caption--line-height: 1; /* 100% */
+  --text-caption--font-weight: 600; /* SemiBold */
+  --text-caption--letter-spacing: 0; 
+  
+  /* Класс text-display (для заголовка) */
+  --text-display: 55px;
+  --text-display--line-height: 1; /* 100% */
+  --text-display--font-weight: 500; /* Medium */
+
+  /* 6. РАДИУСЫ */
+  --radius-btn: 8px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Создадим удобный класс-утилиту для контейнера, 
+   чтобы не писать max-w-[1410px] mx-auto px-4 каждый раз 
+*/
+@utility container-main {
+  max-width: var(--width-main);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* 16px отступы по бокам на мобилке */
+  padding-right: 1rem;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
+/* Сброс стилей для body (опционально, но полезно) */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-black);
+  font-family: var(--font-sans);
 }
